@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/css/layui.css">
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo layui-hide-xs layui-bg-black">正心全栈编程</div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">最新活动</a></li>
+            <li class="layui-nav-item layui-this"><a href="">核心编程</a></li>
+            <li class="layui-nav-item"><a href="">爬虫开发</a></li>
+            <li class="layui-nav-item"><a href="">数据分析</a></li>
+
+            <li class="layui-nav-item">
+                <a href="JavaScript:;">网站开发</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">前端基础</a></dd>
+                    <dd><a href="">flask 框架</a></dd>
+                    <dd><a href="">flask 项目</a></dd>
+                </dl>
+            </li>
+        </ul>
+
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
+                {% if not is_login %}
+                    <a href="/login">
+                        登录
+                    </a>
+                {% else %}
+                    <div>
+                        <img src="//unpkg.com/outeres@0.0.10/img/layui/icon-v2.png" class="layui-nav-img">
+                        <span id="log_status">登录</span>
+                    </div>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">个人中心</a></dd>
+                        <dd><a href="javascript:;">设置</a></dd>
+                        <dd><a href="/logout">退出</a></dd>
+                    </dl>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="/static/layui.js"></script>
+<script>
+
+</script>
+</body>
+</html>
