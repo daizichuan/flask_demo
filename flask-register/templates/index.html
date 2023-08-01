@@ -28,19 +28,19 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
                 {% if not is_login %}
-                    <a href="/login">
-                        登录
-                    </a>
+                <a href="/login">
+                    登录
+                </a>
                 {% else %}
-                    <div>
-                        <img src="//unpkg.com/outeres@0.0.10/img/layui/icon-v2.png" class="layui-nav-img">
-                        <span id="log_status">登录</span>
-                    </div>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">个人中心</a></dd>
-                        <dd><a href="javascript:;">设置</a></dd>
-                        <dd><a href="/logout">退出</a></dd>
-                    </dl>
+                <div>
+                    <img src="//unpkg.com/outeres@0.0.10/img/layui/icon-v2.png" class="layui-nav-img">
+                    <span id="log_status">登录</span>
+                </div>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">个人中心</a></dd>
+                    <dd><a href="javascript:;">设置</a></dd>
+                    <dd><a href="/logout">退出</a></dd>
+                </dl>
                 {% endif %}
             </li>
         </ul>
@@ -48,7 +48,20 @@
 </div>
 <script src="/static/layui.js"></script>
 <script>
+    layui.use('jquery', function () {
+        var $ = layui.jquery;
 
+        fetch('/login_mobile', {
+            method: 'GET',
+        }).then(response => response.json()).then(data => {
+            if (data.code !== 0) {
+                layer.msg(data.message, {icon: 1})
+            } else {
+                $("#log_status").text(data.mobile)
+            }
+        })
+
+    })
 </script>
 </body>
 </html>

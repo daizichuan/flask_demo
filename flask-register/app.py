@@ -138,7 +138,7 @@ def logout():
 @app.route('/login_mobile')
 def login_mobile():
     return {
-        'mobile': session['mobile'],
+        'mobile': session.get('mobile'),
         'code': 0
     }
 
